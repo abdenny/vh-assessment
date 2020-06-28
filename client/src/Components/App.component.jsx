@@ -26,7 +26,8 @@ function App() {
         let convertedMetrics = {
           city: selectedValues.city,
           state: selectedValues.state,
-          date: new Date().toString(),
+          //Formatting the date.
+          date: new Date().toString().split(' ', 5).join(' '),
           //Converting to Farenheit, API returns Kelvin.
           f: ((weatherObj.main.temp - 273.15) * (9 / 5) + 32).toFixed(2),
           humidity: weatherObj.main.humidity,

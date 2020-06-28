@@ -11,7 +11,7 @@ const GridCard = ({ cardInfo, deletePost }) => {
             <Card.Title>
               {cardInfo.city}, {cardInfo.state}
             </Card.Title>
-            <Card.Text>On {cardInfo.date} </Card.Text>
+            <Card.Text>Time: {cardInfo.date} </Card.Text>
             <Card.Text>The weather was: {cardInfo.temp} F°</Card.Text>
             <Card.Text>The humidity was: {cardInfo.humidity} %</Card.Text>
             <Button
