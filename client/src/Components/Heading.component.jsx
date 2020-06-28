@@ -5,7 +5,11 @@ function Heading({ subtitle }) {
   return (
     <>
       <Row>
-        <Col className='text-center' style={{ fontSize: '2em' }} xs={12}>
+        <Col
+          className='text-center'
+          style={{ fontSize: '2em', marginTop: '20px' }}
+          xs={12}
+        >
           {subtitle}
         </Col>
       </Row>

@@ -23,7 +23,6 @@ function App() {
         return response.json();
       })
       .then(({ weatherObj }) => {
-        console.log(weatherObj);
         let convertedMetrics = {
           city: selectedValues.city,
           state: selectedValues.state,

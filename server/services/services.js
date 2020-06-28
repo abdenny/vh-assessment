@@ -39,7 +39,6 @@ services.post('/weather-event', (req, res) => {
 
 services.post('/delete-weather-event', (req, res) => {
   let id = req.body.id;
-
   knex('weather')
     .where({ id: id })
     .del()

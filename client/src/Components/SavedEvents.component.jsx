@@ -9,6 +9,7 @@ const SavedEvents = () => {
 
   useEffect(() => {
     fetchPosts();
+    // eslint-disable-next-line
   }, []);
 
   //Method called in useEffect and deletePost. Fetches all events from API, and creates an array of cards to populate page.
@@ -43,8 +44,8 @@ const SavedEvents = () => {
   return (
     <>
       <Container>
-        <Heading subtitle={'View Posts'} />
-        <Row>{posts}</Row>
+        <Heading subtitle={'Saved weather events'} />
+        <Row style={{ marginBottom: '20px' }}>{posts}</Row>
       </Container>
     </>
   );

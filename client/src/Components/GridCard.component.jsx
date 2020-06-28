@@ -6,7 +6,7 @@ const GridCard = ({ cardInfo, deletePost }) => {
   return (
     <Col sm={6}>
       <div className='card-container'>
-        <Card className='grid-card text-center'>
+        <Card className='grid-card text-center card-shadow'>
           <Card.Body>
             <Card.Title>
               {cardInfo.city}, {cardInfo.state}
