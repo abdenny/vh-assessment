@@ -1,16 +1,43 @@
 const express = require('express');
-// import userRouter from './routes/userRouter';
-// import postsRouter from './routes/postsRouter';
-// import postGuestRouter from './routes/postGuestRouter';
-
 const services = express();
-// You may add services specific middlewares here
-// TODO: move all controllers in the src/services/controllers folder
-// services.use('/users', userRouter);
-// services.use('/posts', postsRouter);
-// services.use('/posts/guests', postGuestRouter);
+const fetch = require('node-fetch');
+const knex = require('../knex/knex');
 
-services.get('/', (req, res) => {
+services.post('/weather-search', (req, res) => {
+  let city = req.body.city;
+  let state = req.body.state;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state})&appid=${process.env.API_Key}`;
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((weatherObj) => {
+      res.send({
+        weatherObj,
+      });
+    });
+});
+
+services.post('/weather-event', (req, res) => {
+  let city = req.body.city;
+  let state = req.body.state;
+  let date = req.body.date;
+  let temp = req.body.f;
+  let humidity = req.body.humidity;
+  knex('weather')
+    .insert({
+      city: city,
+      state: state,
+      date: date,
+      temp: temp,
+      humidity: humidity,
+    })
+    .then(function (weather) {
+      res.send({ message: 'The current weather was succesfully saved!' });
+    });
+});
+
+services.get('/weather-search', (req, res) => {
   res.send({
     message: 'Hello from the services',
   });
