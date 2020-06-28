@@ -1,19 +1,13 @@
 const express = require('express');
-// import userRouter from './routes/userRouter';
-// import postsRouter from './routes/postsRouter';
-// import postGuestRouter from './routes/postGuestRouter';
-
 const api = express();
-// You may add api specific middlewares here
-// TODO: move all controllers in the src/api/controllers folder
-// api.use('/users', userRouter);
-// api.use('/posts', postsRouter);
-// api.use('/posts/guests', postGuestRouter);
+const knex = require('../knex/knex');
 
-api.get('/', (req, res) => {
-  res.send({
-    message: 'Hello from the API',
-  });
+api.get('/weather-events', (req, res) => {
+  knex('weather')
+    .select('*')
+    .then((data_from_table) => {
+      res.send(data_from_table);
+    });
 });
 
 module.exports = api;
