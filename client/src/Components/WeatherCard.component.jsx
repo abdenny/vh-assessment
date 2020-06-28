@@ -5,6 +5,24 @@ import '../Styles/WeatherCard.css';
 
 const WeatherCard = ({ weatherInfo }) => {
   console.log(weatherInfo);
+
+  let postWeatherEvent = () => {
+    console.log('hi');
+    fetch('http://localhost:3001/services/weather-event', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(weatherInfo),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then(({ message }) => {
+        alert(message);
+      });
+  };
+
   return (
     <div className='card-container'>
       <Card className='card text-center'>
@@ -14,7 +32,9 @@ const WeatherCard = ({ weatherInfo }) => {
           </Card.Title>
           <Card.Text>Current weather: {weatherInfo.f} F°</Card.Text>
           <Card.Text>Current humidity: {weatherInfo.humidity}%</Card.Text>
-          <Button variant='primary'>Save Event</Button>
+          <Button variant='primary' onClick={postWeatherEvent}>
+            Save Event
+          </Button>
         </Card.Body>
       </Card>
     </div>
