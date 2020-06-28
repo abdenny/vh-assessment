@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import LocationInput from './LocationInput.component';
 import WeatherCard from './WeatherCard.component';
+import Heading from './Heading.component';
 
 function App() {
   const [selectedValues, setSelectedValues] = useState([]);
@@ -22,11 +23,10 @@ function App() {
         return response.json();
       })
       .then(({ weatherObj }) => {
-        console.log(weatherObj);
         let convertedMetrics = {
           city: selectedValues.city,
           state: selectedValues.state,
-          date: new Date().toTimeString(),
+          date: new Date().toString(),
           //Converting to Farenheit, API returns Kelvin.
           f: ((weatherObj.main.temp - 273.15) * (9 / 5) + 32).toFixed(2),
           humidity: weatherObj.main.humidity,
@@ -45,6 +45,7 @@ function App() {
 
   return (
     <>
+      <Heading subtitle={'Search for the current weather'} />
       <LocationInput selectLocation={selectLocation} searchApi={searchApi} />
       <Row>
         <Col sm={2}></Col>

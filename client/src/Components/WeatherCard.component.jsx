@@ -7,7 +7,6 @@ const WeatherCard = ({ weatherInfo }) => {
   console.log(weatherInfo);
 
   let postWeatherEvent = () => {
-    console.log('hi');
     fetch('http://localhost:3001/services/weather-event', {
       method: 'POST',
       headers: {
@@ -25,7 +24,7 @@ const WeatherCard = ({ weatherInfo }) => {
 
   return (
     <div className='card-container'>
-      <Card className='card text-center'>
+      <Card className='card text-center card-shadow'>
         <Card.Body>
           <Card.Title>
             {weatherInfo.city}, {weatherInfo.state}

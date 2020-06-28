@@ -37,8 +37,8 @@ const LocationInput = ({ searchApi, selectLocation }) => {
             </Form.Control>
           </Col>
           <Col sm={1}>
-            <Button variant='primary' onClick={searchApi}>
-              Submit
+            <Button variant='secondary' onClick={searchApi}>
+              Search
             </Button>
           </Col>
           <Col sm={2} />

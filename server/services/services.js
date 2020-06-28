@@ -37,10 +37,14 @@ services.post('/weather-event', (req, res) => {
     });
 });
 
-services.get('/weather-search', (req, res) => {
-  res.send({
-    message: 'Hello from the services',
-  });
+services.post('/delete-weather-event', (req, res) => {
+  let id = req.body.id;
+  knex('weather')
+    .where({ id: id })
+    .del()
+    .then(function (weather) {
+      res.send({ message: 'The post event was deleted!' });
+    });
 });
 
 module.exports = services;
