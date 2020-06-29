@@ -4,16 +4,17 @@ import { Card, Button } from 'react-bootstrap';
 import '../Styles/WeatherCard.css';
 
 const WeatherCard = ({ weatherInfo }) => {
-  console.log(weatherInfo);
-
   let postWeatherEvent = () => {
-    fetch('http://localhost:3001/services/weather-event', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(weatherInfo),
-    })
+    fetch(
+      'http://ec2-3-134-91-231.us-east-2.compute.amazonaws.com/services/weather-event',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(weatherInfo),
+      }
+    )
       .then((response) => {
         return response.json();
       })
