@@ -54,7 +54,7 @@ function App() {
       <Row>
         <Col sm={2}></Col>
         <Col sm={8}>
-          {/* Displays card component after API call is complete and info is store in App.js hook */}
+          {/* Displays card component after API call is complete and info is stored in App.js hook */}
           {searchedLocation !== null ? (
             <WeatherCard weatherInfo={searchedLocation} />
           ) : null}
