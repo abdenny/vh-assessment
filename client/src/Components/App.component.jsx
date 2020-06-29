@@ -12,13 +12,16 @@ function App() {
   //Method passed to LocationInput.js to fetch the API with users input, and save the result in App.js hook.
   let searchApi = () => {
     //Posting user input to server and using node-fetch server side to keep the API key protected.
-    fetch('http://localhost:3001/services/weather-search', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(selectedValues),
-    })
+    fetch(
+      'http://ec2-3-134-91-231.us-east-2.compute.amazonaws.com/services/weather-search',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(selectedValues),
+      }
+    )
       .then((response) => {
         return response.json();
       })

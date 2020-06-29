@@ -14,7 +14,9 @@ const SavedEvents = () => {
 
   //Method called in useEffect and deletePost. Fetches all events from API, and creates an array of cards to populate page.
   let fetchPosts = () => {
-    fetch('http://localhost:3001/api/weather-events')
+    fetch(
+      'http://ec2-3-134-91-231.us-east-2.compute.amazonaws.com/api/weather-events'
+    )
       .then((response) => {
         return response.json();
       })
@@ -31,13 +33,16 @@ const SavedEvents = () => {
 
   //Method passed to GridCard.js. Takes in the cards db ID, posts to server to delete. Calls fetchPosts to update the view.
   let deletePost = (id) => {
-    fetch('http://localhost:3001/services/delete-weather-event', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: id }),
-    }).then((response) => {
+    fetch(
+      'http://ec2-3-134-91-231.us-east-2.compute.amazonaws.com/services/delete-weather-event',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: id }),
+      }
+    ).then((response) => {
       fetchPosts();
     });
   };
